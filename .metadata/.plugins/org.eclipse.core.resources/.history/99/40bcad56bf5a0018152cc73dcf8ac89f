@@ -1,0 +1,51 @@
+package com.qa.planetfashion.test;
+
+import org.testng.annotations.Test;
+/*import org.testng.annotations.Test;
+import static org.testng.Assert.assertEquals;*/
+import java.io.IOException;
+
+import org.testng.Assert;
+import org.testng.annotations.*;
+import com.ta.planetfashion.Config.UIActions;
+import com.ta.planetfashion.base.Base;
+
+
+public class HomeTest extends Base {
+ 
+	
+	public HomeTest() throws IOException {
+		super();
+	
+	}
+	
+@BeforeClass ()
+public void setup() {
+	initilize();
+	String HomePageTitle= UIActions.getTitle();
+}
+
+@Test (priority=1)
+  public void HomeTitleTest() throws IOException {
+	String HomePageTitle= UIActions.getTitle();
+	System.out.println(HomePageTitle);
+	Assert.assertEquals(HomePageTitle, "Planet Sports online shop - You never ride alone.", "Titles don't match");
+		//Assert.assertEquals(HomePageTitle, "Planet Sports online shop - You never ride alone.", "Titles don't match");
+	UIActions.takeScreenshot("C:/Selenium/Selenium Screenshots/HomePage.png");
+  }
+
+/*@Test (priority=1)
+public void RetryTest() throws IOException {
+	Assert.assertEquals(true, false, "It doesn't match");
+			
+	UIActions.takeScreenshot("C:/Selenium Screenshots/Retry.png");
+}*/
+
+@AfterClass
+public void close()
+{
+ driver.quit();
+}
+
+
+}
